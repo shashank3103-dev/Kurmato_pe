@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "970482370151",
+    "project_id": "dmt-kurmato",
+     "storage_bucket": "dmt-kurmato.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970482370151:android:986fa4004a522d770476c2",
+        "android_client_info": {
+          "package_name": "com.example.kurmato_pr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVV73hYP0A_clezXemnPZ6AFq0m6Q-GmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

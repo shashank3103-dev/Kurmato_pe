@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/editProfile"
+            android:icon="@drawable/user"
+            android:title="Edit Profile" />
+
+        <item
+            android:id="@+id/myNetwork"
+            android:icon="@drawable/group"
+            android:title="My Network" />
+
+        <item
+            android:id="@+id/ST_pro"
+            android:icon="@drawable/group"
+            android:title="Switch to Business" />
+
+
+    </group>
+</menu>
