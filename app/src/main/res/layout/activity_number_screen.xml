@@ -35,7 +35,7 @@
 <!--        </EditText>-->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="@dimen/_200sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/numberLayout"
         android:layout_gravity="center_horizontal"
@@ -44,7 +44,8 @@
         android:hint="Enter Number"
         app:startIconDrawable="@android:drawable/ic_menu_call">
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="@dimen/_300sdp"
+            android:layout_width="@dimen/_200sdp"
+
             app:strokeColor="@color/black"
             android:id="@+id/number"
             android:layout_height="wrap_content" />
@@ -52,19 +53,16 @@
     </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+       <com.google.android.material.button.MaterialButton
+           android:layout_width="wrap_content"
+           android:text="Send OTP"
+           android:id="@+id/sendOTP"
+           android:layout_height="wrap_content">
 
-        android:layout_height="match_parent">
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="bottom|right"
-            android:layout_margin="@dimen/_16sdp"
-            android:contentDescription="submit"
-            android:src="@drawable/baseline_arrow_forward_24" />
+       </com.google.android.material.button.MaterialButton>
     </LinearLayout>
 </LinearLayout>

@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.example.kurmato_pr.utils.SmsBroadcastReceiver;
+import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
@@ -28,8 +31,13 @@ public class otpActivity extends AppCompatActivity {
     private PinView pinView;
     private FirebaseAuth mAuth;
 
+    private String getmVerificationId;
+
     Button button;
     String mobile;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,8 @@ public class otpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
         mAuth = FirebaseAuth.getInstance();
         pinView = findViewById(R.id.pinview);
+    
+
         button = findViewById(R.id.show_otp);
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,6 +66,11 @@ public class otpActivity extends AppCompatActivity {
                 verifyVerificationCode(code);
             }
         });
+    }
+
+    private void startSmartUserConsent() {
+        SmsRetrieverClient client = SmsRetriever.getClient(this);
+        client.startSmsUserConsent(null);
     }
 
     private void sendVerificationCode(String mobile) {
@@ -111,7 +126,7 @@ public class otpActivity extends AppCompatActivity {
                             intent.putExtra("mobile", mobile);
                             startActivity(intent);
                         } else {
-                            // verification unsuccessful, display an error message
+                                // verification unsuccessful, display an error message
                             String message = "Something is wrong, we will fix it soon...";
 
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
