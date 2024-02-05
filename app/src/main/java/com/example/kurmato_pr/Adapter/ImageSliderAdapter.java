@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.kurmato_pr.R;
-import com.example.kurmato_pr.fragment.SettlementsFragment;
+import com.example.kurmato_pr.fragment.HomeFragment;
 import com.example.kurmato_pr.utils.SliderData;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -23,7 +23,7 @@ public class ImageSliderAdapter extends SliderViewAdapter<ImageSliderAdapter.Sli
 
     // Constructor
 
-    public ImageSliderAdapter(SettlementsFragment settlementsFragment, ArrayList<SliderData> sliderDataArrayList) {
+    public ImageSliderAdapter(HomeFragment settlementsFragment, ArrayList<SliderData> sliderDataArrayList) {
 
         this.mSliderItems = sliderDataArrayList;
     }
