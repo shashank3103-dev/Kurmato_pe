@@ -1,12 +1,19 @@
 package com.example.kurmato_pr;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.kurmato_pr.databinding.ActivityMainBinding;
 import com.example.kurmato_pr.fragment.HomeFragment;
@@ -36,6 +43,7 @@ public class HomePage extends AppCompatActivity   {
     BottomNavigationView bottomNavigationView;
 
     private boolean isDrawerOpen = false;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +137,3 @@ public class HomePage extends AppCompatActivity   {
 
 
 }
-
-
-
-
-

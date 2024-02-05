@@ -1,11 +1,11 @@
 package com.example.kurmato_pr.fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.kurmato_pr.Adapter.ImageSliderAdapter;
 import com.example.kurmato_pr.Adapter.ViewPageAdapter;
@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
     View myfragment;
     ViewPageAdapter viewPageAdapter;
     SliderView sliderView;
-    ImageView addMoney,sendMoney, wallettowallet;
+    ImageView addMoney,sendMoney, wallettowallet,movieTicket;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
         ImageView addmoney = myfragment.findViewById(R.id.wallet_1);
         ImageView sendMoney = myfragment.findViewById(R.id.wallet_2);
         ImageView walletTowallet = myfragment.findViewById(R.id.wallet_3);
+        ImageView movieTicket = myfragment.findViewById(R.id.movieTicket);
 
       addmoney.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -74,6 +75,13 @@ public class HomeFragment extends Fragment {
           public void onClick(View view) {
               Intent intent = new Intent(getContext(), walletTowallet.class);
               startActivity(intent);
+
+          }
+      });
+      
+      movieTicket.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
 
           }
       });

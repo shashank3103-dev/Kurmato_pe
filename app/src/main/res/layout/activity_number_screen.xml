@@ -45,7 +45,8 @@
         app:startIconDrawable="@android:drawable/ic_menu_call">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="@dimen/_200sdp"
-
+            android:inputType="phone"
+            android:maxLines="1"
             app:strokeColor="@color/black"
             android:id="@+id/number"
             android:layout_height="wrap_content" />

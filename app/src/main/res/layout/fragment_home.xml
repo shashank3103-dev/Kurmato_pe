@@ -374,6 +374,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:id="@+id/movieTicket"
                         android:contentDescription="@string/fragment_home_text_1"
                         android:src="@drawable/ic_airplay" />
 

@@ -45,9 +45,7 @@
         app:itemCount="6"
         app:itemHeight="@dimen/_40sdp"
         app:itemRadius="@dimen/_10sdp"
-        app:itemWidth="@dimen/_40sdp"
-
-        >
+        app:itemWidth="@dimen/_40sdp">
 
     </com.chaos.view.PinView>
 

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Kurmato_pr"
         tools:targetApi="31">
         <activity
+            android:name=".AddBenificiary"
+            android:exported="false" />
+        <activity
             android:name=".walletTrasfer"
             android:exported="false" />
         <activity
@@ -43,13 +46,13 @@
             </intent-filter>
         </activity>
     </application>
-
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

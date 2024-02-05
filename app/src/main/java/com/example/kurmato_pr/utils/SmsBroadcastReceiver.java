@@ -43,6 +43,5 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
 
         void onFailure();
 
-
     }
 }
