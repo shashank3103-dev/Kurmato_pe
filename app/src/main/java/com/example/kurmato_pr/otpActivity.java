@@ -2,12 +2,16 @@ package com.example.kurmato_pr;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.example.kurmato_pr.utils.SmsBroadcastReceiver;
+import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
@@ -19,17 +23,24 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class otpActivity extends AppCompatActivity {
+    private static final int REQ_USER_CONSENT = 200;
+    SmsBroadcastReceiver smsBroadcastReceiver;
     private String mVerificationId;
     private PinView pinView;
     private FirebaseAuth mAuth;
 
+    private String getmVerificationId;
+
     Button button;
-    String mobile;
+    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +48,13 @@ public class otpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
         mAuth = FirebaseAuth.getInstance();
         pinView = findViewById(R.id.pinview);
+
         button = findViewById(R.id.show_otp);
         mAuth = FirebaseAuth.getInstance();
 
         Intent intent = getIntent();
-        mobile = intent.getStringExtra("mobile");
-        sendVerificationCode("+91" +mobile);
+        phoneNumber = intent.getStringExtra("mobile");
+        sendVerificationCode("+91" +phoneNumber);
 
         findViewById(R.id.show_otp).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +68,78 @@ public class otpActivity extends AppCompatActivity {
                 verifyVerificationCode(code);
             }
         });
+        startSmartUserConsent();
     }
+
+    private void startSmartUserConsent() {
+        SmsRetrieverClient client = SmsRetriever.getClient(this);
+        client.startSmsUserConsent(null);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQ_USER_CONSENT){
+
+            if ((resultCode == RESULT_OK) && (data != null)){
+
+                String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
+                getOtpFromMessage(message);
+
+
+            }
+
+
+        }
+
+    }
+
+    private void getOtpFromMessage(String message) {
+        Pattern otpPattern = Pattern.compile("(|^)\\d{6}");
+        Matcher matcher = otpPattern.matcher(message);
+        if (matcher.find()){
+
+            pinView.setText(matcher.group(0));
+//            Intent i = new Intent(otpActivity.this,HomePage.class);
+//            startActivity(i);
+
+        }
+    }
+    private void registerBroadcastReceiver(){
+
+        smsBroadcastReceiver = new SmsBroadcastReceiver();
+
+        smsBroadcastReceiver.smsBroadcastReceiverListener = new SmsBroadcastReceiver.SmsBroadcastReceiverListener() {
+            @Override
+            public void onSuccess(Intent intent) {
+
+                startActivityForResult(intent,REQ_USER_CONSENT);
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        };
+
+        IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
+        registerReceiver(smsBroadcastReceiver,intentFilter);
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        registerBroadcastReceiver();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(smsBroadcastReceiver);
+    }
+
 
     private void sendVerificationCode(String mobile) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -108,10 +191,11 @@ public class otpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // verification successful, start the profile activity
                             Intent intent = new Intent(otpActivity.this, HomePage.class);
-                            intent.putExtra("mobile", mobile);
+                            intent.putExtra("mobile", phoneNumber);
                             startActivity(intent);
+                            finish();
                         } else {
-                            // verification unsuccessful, display an error message
+                                // verification unsuccessful, display an error message
                             String message = "Something is wrong, we will fix it soon...";
 
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
