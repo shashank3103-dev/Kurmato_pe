@@ -36,7 +36,6 @@ public class otpActivity extends AppCompatActivity {
     private String mVerificationId;
     private PinView pinView;
     private FirebaseAuth mAuth;
-
     private String getmVerificationId;
 
     Button button;
@@ -67,78 +66,79 @@ public class otpActivity extends AppCompatActivity {
                 }
                 verifyVerificationCode(code);
             }
+
         });
-        startSmartUserConsent();
+//        startSmartUserConsent();
     }
 
-    private void startSmartUserConsent() {
-        SmsRetrieverClient client = SmsRetriever.getClient(this);
-        client.startSmsUserConsent(null);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+//    private void startSmartUserConsent() {
+//        SmsRetrieverClient client = SmsRetriever.getClient(this);
+//        client.startSmsUserConsent(null);
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == REQ_USER_CONSENT){
+//
+//            if ((resultCode == RESULT_OK) && (data != null)){
+//
+//                String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
+////                getOtpFromMessage(message);
+//
+//
+//            }
+//
+//
+//        }
+//
+//    }
 
-        if (requestCode == REQ_USER_CONSENT){
-
-            if ((resultCode == RESULT_OK) && (data != null)){
-
-                String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                getOtpFromMessage(message);
-
-
-            }
-
-
-        }
-
-    }
-
-    private void getOtpFromMessage(String message) {
-        Pattern otpPattern = Pattern.compile("(|^)\\d{6}");
-        Matcher matcher = otpPattern.matcher(message);
-        if (matcher.find()){
-
-            pinView.setText(matcher.group(0));
+//    private void getOtpFromMessage(String message) {
+//        Pattern otpPattern = Pattern.compile("(|^)\\d{6}");
+//        Matcher matcher = otpPattern.matcher(message);
+//        if (matcher.find()){
+//
+//            pinView.setText(matcher.group(0));
 //            Intent i = new Intent(otpActivity.this,HomePage.class);
 //            startActivity(i);
-
-        }
-    }
-    private void registerBroadcastReceiver(){
-
-        smsBroadcastReceiver = new SmsBroadcastReceiver();
-
-        smsBroadcastReceiver.smsBroadcastReceiverListener = new SmsBroadcastReceiver.SmsBroadcastReceiverListener() {
-            @Override
-            public void onSuccess(Intent intent) {
-
-                startActivityForResult(intent,REQ_USER_CONSENT);
-
-            }
-
-            @Override
-            public void onFailure() {
-
-            }
-        };
-
-        IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
-        registerReceiver(smsBroadcastReceiver,intentFilter);
-
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        registerBroadcastReceiver();
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unregisterReceiver(smsBroadcastReceiver);
-    }
+//
+//        }
+//    }
+//    private void registerBroadcastReceiver(){
+//
+//        smsBroadcastReceiver = new SmsBroadcastReceiver();
+//
+//        smsBroadcastReceiver.smsBroadcastReceiverListener = new SmsBroadcastReceiver.SmsBroadcastReceiverListener() {
+//            @Override
+//            public void onSuccess(Intent intent) {
+//
+//                startActivityForResult(intent,REQ_USER_CONSENT);
+//
+//            }
+//
+//            @Override
+//            public void onFailure() {
+//
+//            }
+//        };
+//
+//        IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
+//        registerReceiver(smsBroadcastReceiver,intentFilter);
+//
+//    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        registerBroadcastReceiver();
+//
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        unregisterReceiver(smsBroadcastReceiver);
+//    }
 
 
     private void sendVerificationCode(String mobile) {
