@@ -31,7 +31,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class otpActivity extends AppCompatActivity {
-    private static final int REQ_USER_CONSENT = 200;
+//    private static final int REQ_USER_CONSENT = 200;
     SmsBroadcastReceiver smsBroadcastReceiver;
     private String mVerificationId;
     private PinView pinView;
