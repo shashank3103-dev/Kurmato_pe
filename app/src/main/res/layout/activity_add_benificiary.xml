@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Gender">
+                android:hint="Select Bank">
 
                 <AutoCompleteTextView
                     android:id="@+id/AutoCompleteTextview"
@@ -70,15 +70,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="wrap_content"
-                app:counterEnabled="true"
-                app:counterMaxLength="10"
+
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
 
-                app:helperText="Enter numbers only"
-                android:hint="Phone Number"
-
-
-                app:startIconDrawable="@android:drawable/stat_sys_phone_call">
+                android:hint="Benificiary Account Number">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="370dp"
 
@@ -88,52 +84,98 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
 
-                android:hint="Enter password"
-                app:startIconDrawable="@android:drawable/ic_lock_lock"
-                app:endIconMode="password_toggle">
+                android:hint="Confirm Account Number">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                    android:layout_width="370dp"
 
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-
-                android:hint="Confirm password"
-                app:startIconDrawable="@android:drawable/ic_lock_lock"
-                app:endIconMode="password_toggle">
+                app:startIconDrawable="@drawable/ic_phone_android"
+                android:hint="Benificiary Name">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                    android:layout_width="370dp"
+
+                    android:layout_height="wrap_content"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:layout_height="wrap_content"
+
+                android:hint="Mobile Number">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="370dp"
 
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+
+                android:hint="Email">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="370dp"
+
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+
+                android:hint="Address">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="370dp"
+
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.button.MaterialButton
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
-                android:text="Sign Up"
+                android:text="Add Benificiary"
                 android:id="@+id/sign_up"
                 android:textAllCaps="true"
                 android:textSize="20sp"
-                 />
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"
-                android:text="By clicking to Sign up you agree to our">
+                android:text="By clicking to Add Benificiary you agree to our">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
@@ -143,9 +185,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:text="Privacy &amp; Policy">
-
             </TextView>
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

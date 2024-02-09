@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.kurmato_pr.databinding.ActivityMainBinding;
 import com.example.kurmato_pr.fragment.HomeFragment;
@@ -27,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
@@ -48,6 +50,7 @@ public class HomePage extends AppCompatActivity   {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(R.layout.activity_home_page);
 
@@ -57,6 +60,9 @@ public class HomePage extends AppCompatActivity   {
         drawerLayout = findViewById(R.id.drawerLayout);
 
         navigationView = findViewById(R.id.navigationView);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+       // float elevation = getResources().getDimension(R.dimen.myToolBar); // Define elevation in dimens.xml
+        //ViewCompat.setElevation(toolbar, elevation);
         loadHomeFragment();
 
         drawer = findViewById(R.id.menu_icon);

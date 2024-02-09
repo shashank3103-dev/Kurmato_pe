@@ -2,9 +2,11 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     android:id="@+id/myToolBar"
-    android:paddingEnd="20sp">
+    android:elevation="4dp"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
 
     <ImageView
         android:id="@+id/menu_icon"
