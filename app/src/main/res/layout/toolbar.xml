@@ -2,20 +2,16 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     android:id="@+id/myToolBar"
-    android:elevation="4dp"
-    app:popupTheme="@style/AppTheme.PopupOverlay">
+    android:paddingEnd="20sp>
 
     <ImageView
         android:id="@+id/menu_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-
         android:backgroundTint="@color/black"
-        android:src="@drawable/menu"
-        />
+        android:src="@drawable/menu"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,7 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
             android:gravity="center_horizontal"
             android:text="DMT Kurmato"
             android:textColor="@android:color/white"
